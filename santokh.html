@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        if (window.location.hostname === 'santokh.co.uk') {
+          window.location.href = 'https://www.santokh.co.uk' + window.location.pathname;
+        }
+      </script>
+      
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Santokh.co.uk | Premium Marketing Services</title>
@@ -555,7 +561,7 @@ header.scrolled {
     transition: margin-left 0.3s ease;
 }
 
-/* Portfolio */
+/* Portfolio with Flip Cards */
 .portfolio {
     background: var(--black);
 }
@@ -592,30 +598,56 @@ header.scrolled {
     gap: 2rem;
 }
 
+/* Flip Card Styles */
 .portfolio-item {
     position: relative;
+    border-radius: 20px;
+    height: 400px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.portfolio-flip-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.portfolio-item.flipped .portfolio-flip-card {
+    transform: rotateY(180deg);
+}
+
+.portfolio-front,
+.portfolio-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
     border-radius: 20px;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.4s ease;
-    cursor: pointer;
 }
 
-.portfolio-item:hover {
-    transform: translateY(-5px);
-    border-color: rgba(106, 13, 173, 0.3);
+.portfolio-front {
+    z-index: 2;
+}
+
+.portfolio-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, rgba(106, 13, 173, 0.1), rgba(255, 107, 53, 0.1));
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .portfolio-img {
     width: 100%;
-    height: 250px;
+    height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.portfolio-item:hover .portfolio-img {
-    transform: scale(1.1);
 }
 
 .portfolio-overlay {
@@ -662,207 +694,109 @@ header.scrolled {
     transition: all 0.3s ease;
 }
 
-/* Case Study Modal */
-.case-study-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(10px);
-    z-index: 10000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
+/* Portfolio Back Content */
+.portfolio-back-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-.case-study-modal.active {
-    display: flex;
-}
-
-.case-study-content {
-    background: linear-gradient(135deg, var(--black), #1a0033);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
-    max-width: 800px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    padding: 3rem;
-    backdrop-filter: blur(20px);
-}
-
-.case-study-close {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    background: none;
-    border: none;
+.portfolio-back-title {
+    font-size: 1.8rem;
+    font-weight: 800;
     color: var(--white);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-bottom: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
-.case-study-close:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--accent);
-}
-
-.case-study-header {
-    margin-bottom: 2rem;
-}
-
-.case-study-category {
+.portfolio-back-subtitle {
     color: var(--primary-light);
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 0.5rem;
 }
 
-.case-study-title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-family: 'Space Grotesk', sans-serif;
-}
-
-.case-study-subtitle {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-.case-study-body {
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.8;
-    font-size: 1rem;
-}
-
-.case-study-body h3 {
-    color: var(--white);
-    font-size: 1.3rem;
-    margin: 2rem 0 1rem;
-    font-weight: 700;
-}
-
-.case-study-body p {
+.portfolio-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
     margin-bottom: 1.5rem;
 }
 
-.case-study-highlights {
+.metric-item {
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(106, 13, 173, 0.3);
-    border-radius: 15px;
-    padding: 1.5rem;
-    margin: 2rem 0;
-}
-
-.case-study-highlights h4 {
-    color: var(--primary-light);
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.case-study-highlights ul {
-    list-style: none;
-    padding: 0;
-}
-
-.case-study-highlights li {
-    padding: 0.5rem 0;
-    position: relative;
-    padding-left: 1.5rem;
-}
-
-.case-study-highlights li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-weight: bold;
-}
-
-/* Testimonials */
-.testimonials-container {
-    position: relative;
-    overflow: hidden;
-    padding: 3rem 0;
-}
-
-.testimonials-track {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-
-.testimonial-slide {
-    min-width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.testimonial-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    max-width: 800px;
-    border-radius: 25px;
-    padding: 3rem;
+    padding: 1rem;
+    border-radius: 12px;
     text-align: center;
-    position: relative;
 }
 
-.testimonial-content {
-    font-size: 1.3rem;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 2rem;
-    position: relative;
-    z-index: 1;
-    font-style: italic;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 400;
-}
-
-.testimonial-author {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.testimonial-author-img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 1rem;
-    border: 2px solid var(--primary);
-}
-
-.testimonial-author-info h4 {
-    font-size: 1.1rem;
+.metric-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent);
     margin-bottom: 0.25rem;
+}
+
+.metric-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+}
+
+.portfolio-description {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.portfolio-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+    background: rgba(106, 13, 173, 0.2);
+    border: 1px solid rgba(106, 13, 173, 0.3);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: var(--primary-light);
+}
+
+.portfolio-back-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.portfolio-back-btn {
+    flex: 1;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.portfolio-back-btn.primary {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     color: var(--white);
 }
 
-.testimonial-author-info p {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.6);
+.portfolio-back-btn.secondary {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--white);
+}
+
+.portfolio-back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(106, 13, 173, 0.3);
 }
 
 /* Stats Section */
@@ -1315,13 +1249,12 @@ footer {
         display: none;
     }
     
-    .case-study-content {
-        padding: 2rem;
-        margin: 1rem;
+    .portfolio-back {
+        padding: 1.5rem;
     }
     
-    .case-study-title {
-        font-size: 1.8rem;
+    .portfolio-back-title {
+        font-size: 1.4rem;
     }
 }
 
@@ -1340,6 +1273,10 @@ footer {
     
     .service-card, .contact-form {
         padding: 1.5rem;
+    }
+    
+    .portfolio-metrics {
+        grid-template-columns: 1fr;
     }
 }
 </style>
@@ -1481,7 +1418,7 @@ footer {
 </div>
 </section>
 
-<!-- Portfolio Section -->
+<!-- Portfolio Section with Flip Cards -->
 <section id="portfolio" class="section portfolio">
 <div class="container">
     <div class="section-header">
@@ -1496,70 +1433,298 @@ footer {
         <button class="portfolio-filter-btn" data-filter="analytics">Data Analytics</button>
     </div>
     <div class="portfolio-grid">
-        <div class="portfolio-item" data-category="crm" data-case-study="bordo-design">
-            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&auto=format&fit=crop&w=2064&q=80" alt="BordoDesign CRM" class="portfolio-img">
-            <div class="portfolio-overlay">
-                <span class="portfolio-category">CRM Solutions</span>
-                <h3 class="portfolio-title">BordoDesign - Complete Digital Transformation</h3>
-                <a href="#" class="portfolio-link">View Case Study <span>→</span></a>
+        <div class="portfolio-item" data-category="crm">
+            <div class="portfolio-flip-card">
+                <div class="portfolio-front">
+                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&auto=format&fit=crop&w=2064&q=80" alt="BordoDesign CRM" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">CRM Solutions</span>
+                        <h3 class="portfolio-title">BordoDesign - Complete Digital Transformation</h3>
+                        <a href="#" class="portfolio-link">Click to Learn More <span>→</span></a>
+                    </div>
+                </div>
+                <div class="portfolio-back">
+                    <div class="portfolio-back-header">
+                        <h3 class="portfolio-back-title">BordoDesign</h3>
+                        <p class="portfolio-back-subtitle">Complete Digital Transformation</p>
+                    </div>
+                    <div class="portfolio-metrics">
+                        <div class="metric-item">
+                            <div class="metric-value">450%</div>
+                            <div class="metric-label">ROI Increase</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">200K+</div>
+                            <div class="metric-label">Leads Generated</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">90%</div>
+                            <div class="metric-label">Client Retention</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">6 Months</div>
+                            <div class="metric-label">Project Duration</div>
+                        </div>
+                    </div>
+                    <p class="portfolio-description">Revolutionized BordoDesign's customer relationship management through a bespoke CRM implementation. Streamlined operations, enhanced customer insights, and automated marketing workflows resulted in unprecedented growth.</p>
+                    <div class="portfolio-tech-stack">
+                        <span class="tech-tag">Salesforce</span>
+                        <span class="tech-tag">Marketing Cloud</span>
+                        <span class="tech-tag">AI Analytics</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
+                    <div class="portfolio-back-actions">
+                        <a href="#" class="portfolio-back-btn primary">View Full Case Study</a>
+                        <a href="#" class="portfolio-back-btn secondary">Visit Website</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="portfolio-item" data-category="website" data-case-study="bordo-website">
-            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="BordoDesign Website" class="portfolio-img">
-            <div class="portfolio-overlay">
-                <span class="portfolio-category">Web Development</span>
-                <h3 class="portfolio-title">BordoDesign.com - Premium Web Architecture</h3>
-                <a href="#" class="portfolio-link">View Case Study <span>→</span></a>
+        
+        <div class="portfolio-item" data-category="website">
+            <div class="portfolio-flip-card">
+                <div class="portfolio-front">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="BordoDesign Website" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Web Development</span>
+                        <h3 class="portfolio-title">BordoDesign.com - Premium Web Architecture</h3>
+                        <a href="#" class="portfolio-link">Click to Learn More <span>→</span></a>
+                    </div>
+                </div>
+                <div class="portfolio-back">
+                    <div class="portfolio-back-header">
+                        <h3 class="portfolio-back-title">BordoDesign.com</h3>
+                        <p class="portfolio-back-subtitle">Premium Web Architecture</p>
+                    </div>
+                    <div class="portfolio-metrics">
+                        <div class="metric-item">
+                            <div class="metric-value">300%</div>
+                            <div class="metric-label">Traffic Growth</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">2.5s</div>
+                            <div class="metric-label">Load Time</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">95/100</div>
+                            <div class="metric-label">PageSpeed Score</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">60%</div>
+                            <div class="metric-label">Conversion Rate</div>
+                        </div>
+                    </div>
+                    <p class="portfolio-description">Created a cutting-edge web presence that perfectly encapsulates BordoDesign's premium brand identity. The responsive architecture delivers exceptional user experiences across all devices.</p>
+                    <div class="portfolio-tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">Headless CMS</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                    <div class="portfolio-back-actions">
+                        <a href="#" class="portfolio-back-btn primary">Explore Project</a>
+                        <a href="#" class="portfolio-back-btn secondary">Visit BordoDesign.com</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="portfolio-item" data-category="marketing" data-case-study="ice-bank">
-            <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" alt="Ice Bank Jewellers" class="portfolio-img">
-            <div class="portfolio-overlay">
-                <span class="portfolio-category">Marketing & CRM</span>
-                <h3 class="portfolio-title">IceBankJewellers - Luxury Marketing Excellence</h3>
-                <a href="#" class="portfolio-link">View Case Study <span>→</span></a>
+        
+        <div class="portfolio-item" data-category="marketing">
+            <div class="portfolio-flip-card">
+                <div class="portfolio-front">
+                    <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" alt="Ice Bank Jewellers" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Marketing & CRM</span>
+                        <h3 class="portfolio-title">IceBankJewellers - Luxury Marketing Excellence</h3>
+                        <a href="#" class="portfolio-link">Click to Learn More <span>→</span></a>
+                    </div>
+                </div>
+                <div class="portfolio-back">
+                    <div class="portfolio-back-header">
+                        <h3 class="portfolio-back-title">IceBankJewellers</h3>
+                        <p class="portfolio-back-subtitle">Luxury Marketing Excellence</p>
+                    </div>
+                    <div class="portfolio-metrics">
+                        <div class="metric-item">
+                            <div class="metric-value">£2.5M</div>
+                            <div class="metric-label">Revenue Generated</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">500%</div>
+                            <div class="metric-label">ROAS</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">150K</div>
+                            <div class="metric-label">Social Followers</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">85%</div>
+                            <div class="metric-label">Brand Awareness</div>
+                        </div>
+                    </div>
+                    <p class="portfolio-description">Elevated IceBankJewellers to the pinnacle of luxury jewelry marketing through sophisticated multi-channel campaigns. Our bespoke strategy positioned them as industry leaders in the premium segment.</p>
+                    <div class="portfolio-tech-stack">
+                        <span class="tech-tag">Meta Ads</span>
+                        <span class="tech-tag">Google Ads</span>
+                        <span class="tech-tag">Influencer Marketing</span>
+                        <span class="tech-tag">Email Automation</span>
+                    </div>
+                    <div class="portfolio-back-actions">
+                        <a href="#" class="portfolio-back-btn primary">View Campaign Details</a>
+                        <a href="#" class="portfolio-back-btn secondary">See Results</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="portfolio-item" data-category="marketing" data-case-study="woodside">
-            <img src="https://images.unsplash.com/photo-1553484771-371a605b060b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Woodside Marketing" class="portfolio-img">
-            <div class="portfolio-overlay">
-                <span class="portfolio-category">Marketing Strategy</span>
-                <h3 class="portfolio-title">Woodside - Strategic Market Positioning</h3>
-                <a href="#" class="portfolio-link">View Case Study <span>→</span></a>
+        
+        <div class="portfolio-item" data-category="marketing">
+            <div class="portfolio-flip-card">
+                <div class="portfolio-front">
+                    <img src="https://images.unsplash.com/photo-1553484771-371a605b060b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Woodside Marketing" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Marketing Strategy</span>
+                        <h3 class="portfolio-title">Woodside - Strategic Market Positioning</h3>
+                        <a href="#" class="portfolio-link">Click to Learn More <span>→</span></a>
+                    </div>
+                </div>
+                <div class="portfolio-back">
+                    <div class="portfolio-back-header">
+                        <h3 class="portfolio-back-title">Woodside</h3>
+                        <p class="portfolio-back-subtitle">Strategic Market Positioning</p>
+                    </div>
+                    <div class="portfolio-metrics">
+                        <div class="metric-item">
+                            <div class="metric-value">#1</div>
+                            <div class="metric-label">Market Position</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">40%</div>
+                            <div class="metric-label">Market Share</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">250%</div>
+                            <div class="metric-label">Lead Quality</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">£5M</div>
+                            <div class="metric-label">Annual Growth</div>
+                        </div>
+                    </div>
+                    <p class="portfolio-description">Transformed Woodside's market presence through strategic positioning and targeted campaigns. Our comprehensive approach established them as the undisputed leader in their sector.</p>
+                    <div class="portfolio-tech-stack">
+                        <span class="tech-tag">Market Research</span>
+                        <span class="tech-tag">Brand Strategy</span>
+                        <span class="tech-tag">Content Marketing</span>
+                        <span class="tech-tag">SEO</span>
+                    </div>
+                    <div class="portfolio-back-actions">
+                        <a href="#" class="portfolio-back-btn primary">Explore Strategy</a>
+                        <a href="#" class="portfolio-back-btn secondary">View Impact</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="portfolio-item" data-category="website" data-case-study="pluto-casting">
-            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80" alt="PlutoCasting" class="portfolio-img">
-            <div class="portfolio-overlay">
-                <span class="portfolio-category">Web Development</span>
-                <h3 class="portfolio-title">PlutoCasting - Industry-Leading Platform</h3>
-                <a href="#" class="portfolio-link">View Case Study <span>→</span></a>
+        
+        <div class="portfolio-item" data-category="website">
+            <div class="portfolio-flip-card">
+                <div class="portfolio-front">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80" alt="PlutoCasting" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Web Development</span>
+                        <h3 class="portfolio-title">PlutoCasting - Industry-Leading Platform</h3>
+                        <a href="#" class="portfolio-link">Click to Learn More <span>→</span></a>
+                    </div>
+                </div>
+                <div class="portfolio-back">
+                    <div class="portfolio-back-header">
+                        <h3 class="portfolio-back-title">PlutoCasting</h3>
+                        <p class="portfolio-back-subtitle">Industry-Leading Platform</p>
+                    </div>
+                    <div class="portfolio-metrics">
+                        <div class="metric-item">
+                            <div class="metric-value">50K+</div>
+                            <div class="metric-label">Active Users</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">99.9%</div>
+                            <div class="metric-label">Uptime</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">4.8/5</div>
+                            <div class="metric-label">User Rating</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">£10M</div>
+                            <div class="metric-label">Transactions</div>
+                        </div>
+                    </div>
+                    <p class="portfolio-description">Developed a revolutionary casting platform that disrupted the industry. Our innovative solution connects talent with opportunities seamlessly, setting new standards for digital casting services.</p>
+                    <div class="portfolio-tech-stack">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Real-time Chat</span>
+                        <span class="tech-tag">Video Streaming</span>
+                    </div>
+                    <div class="portfolio-back-actions">
+                        <a href="#" class="portfolio-back-btn primary">Platform Features</a>
+                        <a href="#" class="portfolio-back-btn secondary">Try Demo</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="portfolio-item" data-category="analytics" data-case-study="smart-buy">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80" alt="SmartBuyProperty" class="portfolio-img">
-            <div class="portfolio-overlay">
-                <span class="portfolio-category">Analytics & Marketing</span>
-                <h3 class="portfolio-title">SmartBuyProperty - Data-Driven Excellence</h3>
-                <a href="#" class="portfolio-link">View Case Study <span>→</span></a>
+        
+        <div class="portfolio-item" data-category="analytics">
+            <div class="portfolio-flip-card">
+                <div class="portfolio-front">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80" alt="SmartBuyProperty" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Analytics & Marketing</span>
+                        <h3 class="portfolio-title">SmartBuyProperty - Data-Driven Excellence</h3>
+                        <a href="#" class="portfolio-link">Click to Learn More <span>→</span></a>
+                    </div>
+                </div>
+                <div class="portfolio-back">
+                    <div class="portfolio-back-header">
+                        <h3 class="portfolio-back-title">SmartBuyProperty</h3>
+                        <p class="portfolio-back-subtitle">Data-Driven Excellence</p>
+                    </div>
+                    <div class="portfolio-metrics">
+                        <div class="metric-item">
+                            <div class="metric-value">£50M</div>
+                            <div class="metric-label">Properties Sold</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">10K+</div>
+                            <div class="metric-label">Active Buyers</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">35%</div>
+                            <div class="metric-label">Conversion Rate</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">AI-Powered</div>
+                            <div class="metric-label">Analytics</div>
+                        </div>
+                    </div>
+                    <p class="portfolio-description">Revolutionized property marketing through advanced analytics and AI-driven insights. Our data-centric approach transformed SmartBuyProperty into the leading proptech platform in the UK market.</p>
+                    <div class="portfolio-tech-stack">
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Predictive Analytics</span>
+                        <span class="tech-tag">Big Data</span>
+                        <span class="tech-tag">Dashboard</span>
+                    </div>
+                    <div class="portfolio-back-actions">
+                        <a href="#" class="portfolio-back-btn primary">Analytics Overview</a>
+                        <a href="#" class="portfolio-back-btn secondary">Success Metrics</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 </section>
 
-<!-- Case Study Modal -->
-<div class="case-study-modal" id="caseStudyModal">
-    <div class="case-study-content">
-        <button class="case-study-close" id="caseStudyClose">&times;</button>
-        <div class="case-study-header">
-            <div class="case-study-category" id="modalCategory"></div>
-            <h2 class="case-study-title" id="modalTitle"></h2>
-            <p class="case-study-subtitle" id="modalSubtitle"></p>
-        </div>
-        <div class="case-study-body" id="modalBody"></div>
-    </div>
-</div>
+<!-- Stats Section -->
 <section class="section stats">
 <div class="container">
     <div class="stats-container">
@@ -1616,7 +1781,7 @@ footer {
                 </div>
                 <div class="contact-text">
                     <h4>Strategic Inquiries</h4>
-                    <p><a href="mailto:info@santokh.co.uk">info@santokh.co.uk</a></p>
+                    <p><a href="mailto:santokh@merlingroup.co.uk">santokh@merlingroup.co.uk</a></p>
                 </div>
             </div>
             <div class="contact-item">
@@ -1640,4 +1805,304 @@ footer {
                     <input type="email" id="email" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="subject" class="form-label
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message" class="form-label">Your Message</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="form-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="section cta">
+<div class="container">
+    <div class="cta-container">
+        <h2 class="cta-title">Ready to Transform Your Business?</h2>
+        <p class="cta-description">Join the elite circle of brands that have experienced unprecedented growth through our strategic marketing excellence.</p>
+        <a href="#contact" class="cta-btn">Start Your Success Story</a>
+    </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="container">
+    <div class="footer-grid">
+        <div class="footer-column">
+            <h3 class="footer-logo">Santokh</h3>
+            <p class="footer-about">Elevating brands through sophisticated marketing strategies and cutting-edge digital solutions. Your success is our masterpiece.</p>
+            <div class="footer-social">
+                <a href="#" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="footer-social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4 class="footer-title">Services</h4>
+            <ul class="footer-links">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> Strategic Consultancy</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> SEO & Digital Visibility</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> Precision Advertising</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> Social Media Excellence</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> Content Strategy</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4 class="footer-title">Company</h4>
+            <ul class="footer-links">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                <li><a href="#portfolio"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> Case Studies</a></li>
+                <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> Careers</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4 class="footer-title">Newsletter</h4>
+            <p style="margin-bottom: 1rem; opacity: 0.8;">Subscribe to receive exclusive insights and industry updates.</p>
+            <form class="footer-newsletter-form">
+                <input type="email" class="footer-input" placeholder="Your email">
+                <button type="submit" class="footer-submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2024 Santokh.co.uk. All rights reserved. | Crafted with excellence in Birmingham, UK</p>
+    </div>
+</div>
+</footer>
+
+<script>
+// Header scroll effect
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Mobile menu toggle
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
+
+mobileMenuBtn.addEventListener('click', function() {
+    navLinks.classList.toggle('active');
+    const icon = this.querySelector('i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-times');
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            // Close mobile menu if open
+            navLinks.classList.remove('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+        }
+    });
+});
+
+// Hero particles animation
+function createParticles() {
+    const particlesContainer = document.createElement('div');
+    particlesContainer.className = 'hero-particles';
+    const hero = document.querySelector('.hero');
+    
+    for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        particlesContainer.appendChild(particle);
+    }
+    
+    hero.appendChild(particlesContainer);
+}
+
+createParticles();
+
+// Portfolio filtering
+const filterBtns = document.querySelectorAll('.portfolio-filter-btn');
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        const filter = this.getAttribute('data-filter');
+        
+        portfolioItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                item.style.display = 'block';
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'scale(1)';
+                }, 10);
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    item.style.display = 'none';
+                }, 300);
+            }
+        });
+    });
+});
+
+// Portfolio flip card functionality
+portfolioItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.classList.toggle('flipped');
+    });
+});
+
+// Counter animation for stats
+function animateCounters() {
+    const counters = document.querySelectorAll('.counter');
+    
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const increment = target / 100;
+        let current = 0;
+        
+        const updateCounter = () => {
+            if (current < target) {
+                current += increment;
+                counter.textContent = Math.ceil(current);
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = target;
+            }
+        };
+        
+        updateCounter();
+    });
+}
+
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            
+            // Trigger counter animation for stats section
+            if (entry.target.classList.contains('stats')) {
+                animateCounters();
+                observer.unobserve(entry.target);
+            }
+        }
+    });
+}, observerOptions);
+
+// Observe elements
+document.querySelectorAll('.section').forEach(section => {
+    observer.observe(section);
+});
+
+// Contact form handler with email functionality
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+    
+    // Construct mailto link
+    const mailtoLink = `mailto:santokh@merlingroup.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message (optional)
+    alert('Opening your email client to send the message...');
+    
+    // Reset form
+    contactForm.reset();
+});
+
+// Newsletter form handler
+const newsletterForms = document.querySelectorAll('.footer-newsletter-form');
+newsletterForms.forEach(form => {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        
+        // Construct mailto link for newsletter subscription
+        const mailtoLink = `mailto:santokh@merlingroup.co.uk?subject=Newsletter Subscription&body=Please subscribe this email to the newsletter: ${email}`;
+        
+        // Open email client
+        window.location.href = mailtoLink;
+        
+        // Show success message
+        alert('Thank you for subscribing! We will add you to our newsletter.');
+        
+        // Reset form
+        this.reset();
+    });
+});
+
+// Add animation classes
+document.addEventListener('DOMContentLoaded', function() {
+    // Add fade-in animation to elements
+    const animatedElements = document.querySelectorAll('.service-card, .portfolio-item, .stat-item');
+    
+    animatedElements.forEach((element, index) => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        element.style.transitionDelay = `${index * 0.1}s`;
+        
+        setTimeout(() => {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }, 100);
+    });
+});
+
+
+  // Modal JS Example (optional to enable case study modal clicks)
+  const modal = document.getElementById('caseStudyModal');
+  const closeModal = document.getElementById('caseStudyClose');
+  document.querySelectorAll('.portfolio-item').forEach(item => {
+    item.addEventListener('click', () => {
+      modal.classList.add('active');
+      // Set modal content based on data-attributes if desired
+    });
+  });
+  closeModal.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+
+</script>
+</body>
+</html>
