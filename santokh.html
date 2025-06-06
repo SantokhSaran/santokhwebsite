@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santokh.co.uk | Premium Marketing Services</title>
+<style>
+:root {
+    --primary: #6a0dad;
+    --primary-light: #9b4dca;
+    --primary-dark: #4a0080;
+    --accent: #ff6b35;
+    --white: #ffffff;
+    --black: #121212;
+    --gray: #f5f5f7;
+    --gray-dark: #333333;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Ultra-Minimalist Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+header.scrolled {
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom: 1px solid rgba(106, 13, 173, 0.3);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: -1px;
+    position: relative;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 1px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    position: relative;
+    letter-spacing: 0.5px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.nav-links a:hover {
+    color: var(--white);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.cta-btn {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--white);
+    padding: 0.7rem 1.8rem;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.cta-btn:hover::before {
+    left: 100%;
+}
+
+.mobile-menu-btn {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+/* Revolutionary Hero Section */
+.hero {
+    min-height: 100vh;
+    background: radial-gradient(ellipse at center, var(--primary-dark) 0%, var(--black) 70%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 100px 0 50px;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80') center/cover no-repeat;
+    z-index: 1;
+}
+
+.hero-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--primary-light);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+    50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
+}
+
+.hero-main {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 4rem;
+    position: relative;
+    z-index: 3;
+    width: 100%;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(106, 13, 173, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    color: var(--primary-light);
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.hero-badge::before {
+    content: '✨';
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 50%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -2px;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.hero-primary-btn {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--white);
+    padding: 1.2rem 2.5rem;
+    border-radius: 35px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(106, 13, 173, 0.3);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-primary-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.hero-primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(106, 13, 173, 0.4);
+}
+
+.hero-primary-btn:hover::before {
+    left: 100%;
+}
+
+.hero-secondary-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.hero-secondary-btn:hover {
+    color: var(--primary-light);
+    transform: translateX(5px);
+}
+
+.play-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.hero-secondary-btn:hover .play-icon {
+    background: rgba(106, 13, 173, 0.3);
+}
+
+.hero-visual {
+    width: 350px;
+    height: 350px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.floating-card {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.floating-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+.floating-card p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.card-1 {
+    top: 0;
+    left: 0;
+    width: 180px;
+    animation: floatUp 6s ease-in-out infinite;
+}
+
+.card-2 {
+    top: 100px;
+    right: 0;
+    width: 200px;
+    animation: floatDown 8s ease-in-out infinite reverse;
+}
+
+.card-3 {
+    bottom: 0;
+    left: 50px;
+    width: 160px;
+    animation: floatUp 7s ease-in-out infinite;
+}
+
+@keyframes floatUp {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+@keyframes floatDown {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(20px) rotate(-2deg); }
+}
+
+/* Enhanced Services Section */
+.section {
+    padding: 8rem 0;
+    background: var(--black);
+}
+
+.services {
+    background: linear-gradient(135deg, var(--black) 0%, #1a0033 50%, var(--black) 100%);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.section-title {
+    font-size: 3rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.section-description {
+    max-width: 700px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 25px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    group: hover;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(106, 13, 173, 0.05), rgba(255, 107, 53, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+.service-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(106, 13, 173, 0.3);
+    box-shadow: 0 25px 50px rgba(106, 13, 173, 0.2);
+}
+
+.service-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.service-card:hover .service-image {
+    transform: scale(1.1);
+}
+
+.service-content {
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.service-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 20px;
+    color: var(--white);
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.service-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+    font-weight: 800;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+.service-description {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.service-link {
+    color: var(--primary-light);
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.service-link:hover {
+    color: var(--accent);
+    transform: translateX(5px);
+}
+
+.service-link span {
+    margin-left: 0.5rem;
+    transition: margin-left 0.3s ease;
+}
+
+/* Portfolio */
+.portfolio {
+    background: var(--black);
+}
+
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.portfolio-filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.portfolio-filter-btn.active, .portfolio-filter-btn:hover {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--white);
+    border-color: transparent;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(106, 13, 173, 0.3);
+}
+
+.portfolio-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.portfolio-item:hover .portfolio-img {
+    transform: scale(1.1);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(106, 13, 173, 0.8));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-category {
+    color: var(--white);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.portfolio-title {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.portfolio-link {
+    color: var(--white);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/* Case Study Modal */
+.case-study-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.case-study-modal.active {
+    display: flex;
+}
+
+.case-study-content {
+    background: linear-gradient(135deg, var(--black), #1a0033);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 3rem;
+    backdrop-filter: blur(20px);
+}
+
+.case-study-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.case-study-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent);
+}
+
+.case-study-header {
+    margin-bottom: 2rem;
+}
+
+.case-study-category {
+    color: var(--primary-light);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.case-study-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.case-study-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.case-study-body {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.case-study-body h3 {
+    color: var(--white);
+    font-size: 1.3rem;
+    margin: 2rem 0 1rem;
+    font-weight: 700;
+}
+
+.case-study-body p {
+    margin-bottom: 1.5rem;
+}
+
+.case-study-highlights {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(106, 13, 173, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.case-study-highlights h4 {
+    color: var(--primary-light);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.case-study-highlights ul {
+    list-style: none;
+    padding: 0;
+}
+
+.case-study-highlights li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.case-study-highlights li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* Testimonials */
+.testimonials-container {
+    position: relative;
+    overflow: hidden;
+    padding: 3rem 0;
+}
+
+.testimonials-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.testimonial-slide {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 800px;
+    border-radius: 25px;
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+}
+
+.testimonial-content {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-author-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+    border: 2px solid var(--primary);
+}
+
+.testimonial-author-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    color: var(--white);
+}
+
+.testimonial-author-info p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Stats Section */
+.stats {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    position: relative;
+}
+
+.stats-container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    text-align: center;
+}
+
+.stat-item h3 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--white), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -2px;
+}
+
+.stat-item p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+}
+
+/* Contact Section */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.contact-text h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+}
+
+.contact-text p, .contact-text a {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-text a:hover {
+    color: var(--primary-light);
+}
+
+.contact-form {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    border-radius: 25px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.form-control {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--white);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.2);
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-btn {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--white);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1rem;
+}
+
+.form-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(106, 13, 173, 0.3);
+}
+
+/* CTA Section */
+.cta {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--accent));
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-container {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--white), rgba(255, 255, 255, 0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+.cta-description {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.cta .cta-btn {
+    background: var(--white);
+    color: var(--primary);
+    padding: 1.2rem 3rem;
+    border-radius: 35px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta .cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #0a0a0a, var(--black));
+    color: var(--white);
+    padding: 5rem 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-logo {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.footer-about {
+    line-height: 1.6;
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social-link {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.footer-social-link:hover {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+.footer-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 2px;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-links a:hover {
+    color: var(--primary-light);
+}
+
+.footer-links a i {
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.footer-newsletter-form {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.footer-input {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px 0 0 25px;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--white);
+    backdrop-filter: blur(10px);
+}
+
+.footer-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.footer-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-submit {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--white);
+    border: none;
+    padding: 0 1.5rem;
+    border-radius: 0 25px 25px 0;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.footer-submit:hover {
+    box-shadow: 0 5px 15px rgba(106, 13, 173, 0.3);
+}
+
+.copyright {
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .hero-main {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .hero-visual {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .cta-title {
+        font-size: 2.8rem;
+    }
+    
+    .hero-visual {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .hero h1 {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .cta-title {
+        font-size: 2.2rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .hero-visual {
+        display: none;
+    }
+    
+    .case-study-content {
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+    .case-study-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .hero {
+        padding: 120px 0 60px;
+    }
+    
+    .section {
+        padding: 4rem 0;
+    }
+    
+    .service-card, .contact-form {
+        padding: 1.5rem;
+    }
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<!-- Ultra-Minimalist Header -->
+<header>
+<div class="container">
+    <nav class="navbar">
+        <a href="#" class="logo">Santokh</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact" class="cta-btn">Get Started</a></li>
+        </ul>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+</div>
+</header>
+
+<!-- Revolutionary Hero Section -->
+<section id="home" class="hero">
+<div class="hero-bg"></div>
+<div class="hero-particles"></div>
+<div class="container">
+    <div class="hero-main">
+        <div class="hero-content">
+            <div class="hero-badge">
+                ✨ Where Excellence Meets Innovation
+            </div>
+            <h1>Architectural Excellence in Digital Marketing</h1>
+            <p class="hero-subtitle">While others execute campaigns, I orchestrate symphonies of strategic brilliance. Experience marketing methodology that transcends conventional boundaries and establishes new paradigms of digital excellence.</p>
+            <div class="hero-actions">
+                <a href="#services" class="hero-primary-btn">Explore Our Mastery</a>
+                <a href="#portfolio" class="hero-secondary-btn">
+                    <div class="play-icon">▶</div>
+                    Witness Our Legacy
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-card card-1">
+                <h4>🔥 400% ROI</h4>
+                <p>Minimum delivery standard</p>
+            </div>
+            <div class="floating-card card-2">
+                <h4>💡 Innovative Excellence</h4>
+                <p>Guaranteed methodology</p>
+            </div>
+            <div class="floating-card card-3">
+                <h4>⚡ Rapid Transformation</h4>
+                <p>Results within 30 days</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Enhanced Services Section -->
+<section id="services" class="section services">
+<div class="container">
+    <div class="section-header">
+        <h2 class="section-title">Sophisticated Marketing Architecture</h2>
+        <p class="section-description">We craft bespoke marketing ecosystems that transcend traditional methodologies, delivering transformative results through strategic innovation and meticulous execution.</p>
+    </div>
+    <div class="services-grid">
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80" alt="Digital Strategy" class="service-image">
+            <div class="service-content">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="service-title">Strategic Consultancy & Planning</h3>
+                <p class="service-description">Comprehensive strategic frameworks designed through rigorous market analysis and competitive intelligence. We architect roadmaps that position your brand for sustained market leadership and exponential growth.</p>
+                <a href="#" class="service-link">Discover Strategic Excellence <span>→</span></a>
+            </div>
+        </div>
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" alt="SEO Optimization" class="service-image">
+            <div class="service-content">
+                <div class="service-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3 class="service-title">Advanced SEO & Digital Visibility</h3>
+                <p class="service-description">Sophisticated search engine optimization utilizing cutting-edge algorithmic insights and white-hat methodologies. We establish digital dominance through technical excellence and content authority.</p>
+                <a href="#" class="service-link">Achieve Digital Supremacy <span>→</span></a>
+            </div>
+        </div>
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2039&q=80" alt="PPC Campaigns" class="service-image">
+            <div class="service-content">
+                <div class="service-icon">
+                    <i class="fas fa-ad"></i>
+                </div>
+                <h3 class="service-title">Precision-Targeted Advertising</h3>
+                <p class="service-description">Meticulously crafted advertising campaigns that leverage advanced audience segmentation and behavioral analytics. Every impression is strategically optimized for maximum conversion potential and ROI excellence.</p>
+                <a href="#" class="service-link">Experience Advertising Mastery <span>→</span></a>
+            </div>
+        </div>
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" alt="Social Media" class="service-image">
+            <div class="service-content">
+                <div class="service-icon">
+                    <i class="fas fa-share-alt"></i>
+                </div>
+                <h3 class="service-title">Social Media Excellence</h3>
+                <p class="service-description">Comprehensive social media strategies that cultivate authentic brand communities and drive meaningful engagement. We transform followers into brand advocates through sophisticated content orchestration.</p>
+                <a href="#" class="service-link">Elevate Social Presence <span>→</span></a>
+            </div>
+        </div>
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Content Marketing" class="service-image">
+            <div class="service-content">
+                <div class="service-icon">
+                    <i class="fas fa-pen"></i>
+                </div>
+                <h3 class="service-title">Premium Content Strategy</h3>
+                <p class="service-description">Expertly crafted content ecosystems that establish thought leadership and drive conversion. Our content transcends mere information delivery to create compelling narratives that resonate and convert.</p>
+                <a href="#" class="service-link">Master Content Excellence <span>→</span></a>
+            </div>
+        </div>
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Analytics & Insights" class="service-image">
+            <div class="service-content">
+                <div class="service-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3 class="service-title">Advanced Analytics & Intelligence</h3>
+                <p class="service-description">Sophisticated data analysis and strategic insights that illuminate opportunities and optimize performance. We transform complex metrics into actionable intelligence for sustainable growth.</p>
+                <a href="#" class="service-link">Unlock Data Mastery <span>→</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="section portfolio">
+<div class="container">
+    <div class="section-header">
+        <h2 class="section-title">Distinguished Client Portfolio</h2>
+        <p class="section-description">Explore our curated collection of transformative partnerships, where strategic excellence meets measurable success across diverse industries and market segments.</p>
+    </div>
+    <div class="portfolio-filters">
+        <button class="portfolio-filter-btn active" data-filter="all">All Projects</button>
+        <button class="portfolio-filter-btn" data-filter="crm">CRM Solutions</button>
+        <button class="portfolio-filter-btn" data-filter="website">Web Development</button>
+        <button class="portfolio-filter-btn" data-filter="marketing">Marketing Campaigns</button>
+        <button class="portfolio-filter-btn" data-filter="analytics">Data Analytics</button>
+    </div>
+    <div class="portfolio-grid">
+        <div class="portfolio-item" data-category="crm" data-case-study="bordo-design">
+            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&auto=format&fit=crop&w=2064&q=80" alt="BordoDesign CRM" class="portfolio-img">
+            <div class="portfolio-overlay">
+                <span class="portfolio-category">CRM Solutions</span>
+                <h3 class="portfolio-title">BordoDesign - Complete Digital Transformation</h3>
+                <a href="#" class="portfolio-link">View Case Study <span>→</span></a>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="website" data-case-study="bordo-website">
+            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="BordoDesign Website" class="portfolio-img">
+            <div class="portfolio-overlay">
+                <span class="portfolio-category">Web Development</span>
+                <h3 class="portfolio-title">BordoDesign.com - Premium Web Architecture</h3>
+                <a href="#" class="portfolio-link">View Case Study <span>→</span></a>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="marketing" data-case-study="ice-bank">
+            <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" alt="Ice Bank Jewellers" class="portfolio-img">
+            <div class="portfolio-overlay">
+                <span class="portfolio-category">Marketing & CRM</span>
+                <h3 class="portfolio-title">IceBankJewellers - Luxury Marketing Excellence</h3>
+                <a href="#" class="portfolio-link">View Case Study <span>→</span></a>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="marketing" data-case-study="woodside">
+            <img src="https://images.unsplash.com/photo-1553484771-371a605b060b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Woodside Marketing" class="portfolio-img">
+            <div class="portfolio-overlay">
+                <span class="portfolio-category">Marketing Strategy</span>
+                <h3 class="portfolio-title">Woodside - Strategic Market Positioning</h3>
+                <a href="#" class="portfolio-link">View Case Study <span>→</span></a>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="website" data-case-study="pluto-casting">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80" alt="PlutoCasting" class="portfolio-img">
+            <div class="portfolio-overlay">
+                <span class="portfolio-category">Web Development</span>
+                <h3 class="portfolio-title">PlutoCasting - Industry-Leading Platform</h3>
+                <a href="#" class="portfolio-link">View Case Study <span>→</span></a>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="analytics" data-case-study="smart-buy">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80" alt="SmartBuyProperty" class="portfolio-img">
+            <div class="portfolio-overlay">
+                <span class="portfolio-category">Analytics & Marketing</span>
+                <h3 class="portfolio-title">SmartBuyProperty - Data-Driven Excellence</h3>
+                <a href="#" class="portfolio-link">View Case Study <span>→</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Case Study Modal -->
+<div class="case-study-modal" id="caseStudyModal">
+    <div class="case-study-content">
+        <button class="case-study-close" id="caseStudyClose">&times;</button>
+        <div class="case-study-header">
+            <div class="case-study-category" id="modalCategory"></div>
+            <h2 class="case-study-title" id="modalTitle"></h2>
+            <p class="case-study-subtitle" id="modalSubtitle"></p>
+        </div>
+        <div class="case-study-body" id="modalBody"></div>
+    </div>
+</div>
+<section class="section stats">
+<div class="container">
+    <div class="stats-container">
+        <div class="stat-item">
+            <h3><span class="counter" data-target="250">250</span>+</h3>
+            <p>Projects Delivered</p>
+        </div>
+        <div class="stat-item">
+            <h3><span class="counter" data-target="150">150</span>+</h3>
+            <p>Distinguished Clients</p>
+        </div>
+        <div class="stat-item">
+            <h3><span class="counter" data-target="15">15</span>+</h3>
+            <p>Years of Excellence</p>
+        </div>
+        <div class="stat-item">
+            <h3><span class="counter" data-target="30">30</span>+</h3>
+            <p>Industry Awards</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section">
+<div class="container">
+    <div class="section-header">
+        <h2 class="section-title">Initiate Strategic Partnership</h2>
+        <p class="section-description">Connect with our consultancy team to explore how sophisticated marketing architecture can transform your business objectives into measurable success.</p>
+    </div>
+    <div class="contact-grid">
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-text">
+                    <h4>Consultancy Location</h4>
+                    <p>123 Marketing Excellence Boulevard, Birmingham, United Kingdom</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="contact-text">
+                    <h4>Direct Consultation</h4>
+                    <p><a href="tel:+4412345678901">+44 1234 567 8901</a></p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-text">
+                    <h4>Strategic Inquiries</h4>
+                    <p><a href="mailto:info@santokh.co.uk">info@santokh.co.uk</a></p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="contact-text">
+                    <h4>Consultation Hours</h4>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM GMT</p>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Professional Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject" class="form-label
