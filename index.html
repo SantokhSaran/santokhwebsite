@@ -4,45 +4,208 @@
     <script>
         if (window.location.hostname === 'santokh.co.uk') {
           window.location.href = 'https://www.santokh.co.uk' + window.location.pathname;
-        }
+        /* Universal text fix for all devices */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
 
-/* Mobile Text Visibility Fixes */
-@media (max-width: 768px) {
-    /* Ensure all gradient text is visible */
+/* Ensure base text color */
+body,
+body * {
+    color: var(--white);
+}
+
+/* Override any transparent text fills */
+* {
+    -webkit-text-fill-color: currentColor;
+}
+
+/* Specific fixes for gradient text elements */
+[class*="gradient"],
+[style*="gradient"] {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensure text contrast on dark backgrounds */
+.hero *,
+.section *,
+.footer *,
+.services *,
+.portfolio *,
+.stats *,
+.cta *,
+.contact * {
+    color: inherit;
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    /* iOS Safari detected */
     .hero h1,
     .section-title,
     .cta-title,
     .stat-item h3,
+    .hero-beautiful,
+    .hero-minimal,
+    .hero-strong {
+        -webkit-background-clip: border-box !important;
+        -webkit-text-fill-color: currentColor !important;
+        background: none !important;
+        color: #ffffff !important;
+    }
+}
+
+/* Final fallback for any missed elements */
+@media (max-width: 768px) {
+    .hero *:not(input):not(textarea) {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+    
+    .section *:not(input):not(textarea) {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+}
+
+/* Mobile Text Visibility Fixes */
+@media (max-width: 768px) {
+    /* Remove gradient effects and use solid colors for all text */
+    .hero h1 {
+        background: none !important;
+        -webkit-background-clip: unset !important;
+        -webkit-text-fill-color: unset !important;
+        background-clip: unset !important;
+        color: var(--white) !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    
+    .section-title {
+        background: none !important;
+        -webkit-background-clip: unset !important;
+        -webkit-text-fill-color: unset !important;
+        background-clip: unset !important;
+        color: var(--white) !important;
+    }
+    
+    .cta-title {
+        background: none !important;
+        -webkit-background-clip: unset !important;
+        -webkit-text-fill-color: unset !important;
+        background-clip: unset !important;
+        color: var(--white) !important;
+    }
+    
+    .stat-item h3 {
+        background: none !important;
+        -webkit-background-clip: unset !important;
+        -webkit-text-fill-color: unset !important;
+        background-clip: unset !important;
+        color: var(--white) !important;
+    }
+    
     .hero-beautiful {
-        background: var(--white) !important;
-        -webkit-background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-        background-clip: text !important;
-        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+        background: none !important;
+        -webkit-background-clip: unset !important;
+        -webkit-text-fill-color: unset !important;
+        background-clip: unset !important;
+        color: var(--accent) !important;
+        font-weight: 700;
+    }
+    
+    .hero-minimal {
+        color: var(--white) !important;
+    }
+    
+    .hero-strong {
+        color: var(--primary-light) !important;
     }
     
     /* Ensure all body text has good contrast */
-    p, span, div {
-        color: inherit;
-    }
-    
-    .hero-subtitle,
-    .section-description,
-    .service-description,
-    .portfolio-description,
-    .footer-about {
+    .hero-subtitle {
         color: rgba(255, 255, 255, 0.95) !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
     
-    /* Make links more visible */
-    a {
-        font-weight: 500;
+    .section-description {
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+    
+    .service-description {
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+    
+    .portfolio-description {
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+    
+    .footer-about {
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+    
+    /* Portfolio text fixes */
+    .portfolio-title {
+        color: var(--white) !important;
+    }
+    
+    .portfolio-category {
+        color: var(--white) !important;
+    }
+    
+    .portfolio-link {
+        color: var(--white) !important;
+    }
+    
+    .portfolio-back-title {
+        color: var(--white) !important;
+    }
+    
+    .metric-value {
+        color: var(--accent) !important;
+    }
+    
+    .metric-label {
+        color: rgba(255, 255, 255, 0.8) !important;
+    }
+    
+    /* Service card text */
+    .service-title {
+        color: var(--white) !important;
+    }
+    
+    .service-link {
+        color: var(--accent) !important;
+    }
+    
+    /* Contact section */
+    .contact-text h4 {
+        color: var(--white) !important;
+    }
+    
+    .contact-text p {
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+    
+    /* Footer text */
+    .footer-title {
+        color: var(--white) !important;
+    }
+    
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+    
+    /* Form labels */
+    .form-label {
+        color: var(--white) !important;
     }
     
     /* Ensure form inputs are readable */
     .form-control {
         background: rgba(255, 255, 255, 0.1);
-        color: var(--white);
+        color: var(--white) !important;
         border-color: rgba(255, 255, 255, 0.3);
     }
     
@@ -59,31 +222,186 @@
     }
     
     /* Ensure badges and tags are visible */
-    .hero-badge,
-    .portfolio-category,
+    .hero-badge {
+        background: rgba(0, 0, 0, 0.5) !important;
+        color: var(--white) !important;
+        font-weight: 600;
+    }
+    
     .tech-tag {
+        color: var(--white) !important;
         font-weight: 600;
     }
 }
 
-/* High Contrast Mode for Accessibility */
-@media (prefers-contrast: high) {
-    .hero h1,
-    .section-title,
-    .cta-title {
-        background: var(--white) !important;
+/* CRITICAL MOBILE TEXT VISIBILITY FIX */
+@media screen and (max-width: 768px) {
+    /* Force all text to be white with no gradients */
+    * {
+        -webkit-background-clip: border-box !important;
+        -webkit-text-fill-color: #ffffff !important;
+        background-clip: border-box !important;
+        text-fill-color: #ffffff !important;
     }
     
-    p, span, div, a {
+    /* Override ALL gradient text */
+    .hero h1,
+    .hero-usp,
+    .hero-tagline,
+    .hero-tagline span,
+    .hero-subtitle,
+    .section-title,
+    .cta-title,
+    .stat-item h3,
+    .service-title,
+    .portfolio-title,
+    .footer-logo,
+    .hero-minimal,
+    .hero-strong,
+    .hero-beautiful {
+        background: none !important;
+        background-image: none !important;
+        -webkit-background-clip: border-box !important;
+        -webkit-text-fill-color: #ffffff !important;
+        background-clip: border-box !important;
+        color: #ffffff !important;
         opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+    }
+    
+    /* Ensure paragraphs and spans are visible */
+    p, span, div, a, li, h1, h2, h3, h4, h5, h6 {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Fix hero section specifically */
+    .hero {
+        background: #1a1a1a !important;
+    }
+    
+    .hero-content * {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+    
+    /* Remove animations that might hide text */
+    * {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+    }
+    
+    /* Dark sections need light text */
+    .section {
+        background: #1a1a1a !important;
+        color: #ffffff !important;
+    }
+    
+    .section * {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+    
+    /* Footer text */
+    .footer * {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+    
+    /* Links need to be visible */
+    a {
+        color: #ff6b35 !important;
+        -webkit-text-fill-color: #ff6b35 !important;
+        text-decoration: underline !important;
+    }
+    
+    /* Buttons must be visible */
+    .btn, .cta-btn {
+        background: #6a0dad !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        border: 2px solid #ffffff !important;
+    }
+}
+
+/* Universal text fix for all devices */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Ensure base text color */
+body,
+body * {
+    color: var(--white);
+}
+
+/* Override any transparent text fills */
+* {
+    -webkit-text-fill-color: currentColor;
+}
+
+/* Specific fixes for gradient text elements */
+[class*="gradient"],
+[style*="gradient"] {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensure text contrast on dark backgrounds */
+.hero *,
+.section *,
+.footer *,
+.services *,
+.portfolio *,
+.stats *,
+.cta *,
+.contact * {
+    color: inherit;
+}
+
+/* Mobile-specific overrides */
+@media (max-width: 768px) {
+    /* Force remove all webkit text effects */
+    * {
+        -webkit-background-clip: border-box !important;
+        -webkit-text-fill-color: currentColor !important;
+        text-fill-color: currentColor !important;
     }
 }
       </script>
       
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>Santokh.co.uk | Premium Marketing Services</title>
+<meta name="theme-color" content="#121212">
 <style>
+/* CRITICAL: Disable all gradient text on mobile immediately */
+@media (max-width: 768px) {
+    * {
+        -webkit-text-fill-color: initial !important;
+        background-clip: border-box !important;
+        -webkit-background-clip: border-box !important;
+    }
+}
+
+/* CRITICAL: Global text visibility reset for mobile */
+@media (max-width: 768px) {
+    html, body {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+    
+    * {
+        -webkit-text-fill-color: initial !important;
+    }
+}
+
 :root {
     --primary: #6a0dad;
     --primary-light: #9b4dca;
@@ -104,11 +422,57 @@
     font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-body {
-    background-color: var(--black);
+/* Global text color fix for dark backgrounds */
+section {
     color: var(--white);
+}
+
+p, h1, h2, h3, h4, h5, h6, span, a, li {
+    color: inherit;
+}
+
+/* Fix for gradient text elements - ensure fallback */
+.hero h1,
+.section-title,
+.cta-title,
+.stat-item h3 {
+    /* Always have a fallback color */
+    color: var(--white) !important;
+}
+
+/* Only apply gradient if supported AND not on problematic browsers */
+@supports (-webkit-background-clip: text) and (not (-webkit-touch-callout: none)) {
+    .hero h1,
+    .section-title,
+    .cta-title,
+    .stat-item h3 {
+        background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 50%, var(--accent) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
+
+/* Safari/iOS specific fix */
+@supports (-webkit-touch-callout: none) {
+    .hero h1,
+    .section-title,
+    .cta-title,
+    .stat-item h3 {
+        background: none !important;
+        -webkit-text-fill-color: var(--white) !important;
+        color: var(--white) !important;
+    }
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--white) !important;
+    background: var(--black);
     overflow-x: hidden;
     scroll-behavior: smooth;
+    -webkit-text-fill-color: initial !important;
 }
 
 .container {
@@ -116,6 +480,7 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
+    color: inherit;
 }
 
 /* Ultra-Minimalist Header */
@@ -153,6 +518,7 @@ header.scrolled {
     position: relative;
     font-family: 'Space Grotesk', sans-serif;
     text-transform: uppercase;
+    z-index: 100;
 }
 
 .logo::after {
@@ -288,6 +654,13 @@ header.scrolled {
     width: 100%;
     height: 100%;
     z-index: 2;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .hero-particles {
+        display: none;
+    }
 }
 
 .particle {
@@ -310,12 +683,14 @@ header.scrolled {
     align-items: center;
     gap: 4rem;
     position: relative;
-    z-index: 3;
+    z-index: 10;
     width: 100%;
 }
 
 .hero-content {
     max-width: 700px;
+    position: relative;
+    z-index: 10;
 }
 
 .hero-badge {
@@ -347,21 +722,23 @@ header.scrolled {
     line-height: 1.1;
     margin-bottom: 1.5rem;
     font-weight: 900;
-    background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 50%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     letter-spacing: -2px;
     font-family: 'Space Grotesk', sans-serif;
     text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 769px) {
     .hero h1 {
-        background: var(--white);
+        background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 50%, var(--accent) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        color: #ffffff !important;
     }
 }
 
@@ -533,6 +910,7 @@ header.scrolled {
 .section {
     padding: 8rem 0;
     background: var(--black);
+    color: var(--white);
 }
 
 .services {
@@ -549,13 +927,24 @@ header.scrolled {
     color: var(--white);
     margin-bottom: 1rem;
     font-weight: 900;
-    background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     font-family: 'Space Grotesk', sans-serif;
     text-transform: uppercase;
     letter-spacing: -1px;
+}
+
+@media (min-width: 769px) {
+    .section-title {
+        background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        color: #ffffff !important;
+    }
 }
 
 .section-description {
@@ -643,16 +1032,18 @@ header.scrolled {
 .service-title {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--white);
+    color: var(--white) !important;
     font-weight: 800;
     font-family: 'Space Grotesk', sans-serif;
     letter-spacing: -0.5px;
+    -webkit-text-fill-color: initial !important;
 }
 
 .service-description {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.8) !important;
     line-height: 1.6;
     margin-bottom: 1.5rem;
+    -webkit-text-fill-color: initial !important;
 }
 
 .service-link {
@@ -943,12 +1334,24 @@ header.scrolled {
     font-size: 3.5rem;
     font-weight: 900;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--white), var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     font-family: 'Space Grotesk', sans-serif;
     letter-spacing: -2px;
+    color: var(--white);
+}
+
+@media (min-width: 769px) {
+    .stat-item h3 {
+        background: linear-gradient(135deg, var(--white), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
+
+@media (max-width: 768px) {
+    .stat-item h3 {
+        color: #ffffff !important;
+    }
 }
 
 .stat-item p {
@@ -1053,6 +1456,10 @@ header.scrolled {
     color: var(--white);
 }
 
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
 .form-control:focus {
     outline: none;
     border-color: var(--primary);
@@ -1062,6 +1469,12 @@ header.scrolled {
 textarea.form-control {
     min-height: 150px;
     resize: vertical;
+    color: var(--white);
+}
+
+input.form-control,
+select.form-control {
+    color: var(--white) !important;
 }
 
 .form-btn {
@@ -1104,13 +1517,25 @@ textarea.form-control {
     font-size: 3.5rem;
     font-weight: 900;
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, var(--white), rgba(255, 255, 255, 0.8));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     font-family: 'Space Grotesk', sans-serif;
     text-transform: uppercase;
     letter-spacing: -2px;
+    color: var(--white);
+}
+
+@media (min-width: 769px) {
+    .cta-title {
+        background: linear-gradient(135deg, var(--white), rgba(255, 255, 255, 0.8));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
+
+@media (max-width: 768px) {
+    .cta-title {
+        color: #ffffff !important;
+    }
 }
 
 .cta-description {
@@ -1171,6 +1596,7 @@ footer {
     line-height: 1.6;
     opacity: 0.8;
     margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .footer-social {
@@ -1292,6 +1718,7 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     opacity: 0.7;
     font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 /* Responsive Design */
@@ -1524,10 +1951,79 @@ footer {
         line-height: 1.4;
     }
 }
+/* ABSOLUTE FINAL OVERRIDE */
+@media screen and (max-width: 768px) {
+    *, *::before, *::after {
+        background-clip: border-box !important;
+        -webkit-background-clip: border-box !important;
+        -webkit-text-fill-color: initial !important;
+        text-fill-color: initial !important;
+    }
+    
+    body, html {
+        background: #1a1a1a !important;
+        color: #ffffff !important;
+    }
+    
+    h1, h2, h3, h4, h5, h6, p, span, a, div, li, section, header, footer, nav, article, aside {
+        color: #ffffff !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+}
+
+/* FINAL OVERRIDE - Ensure all text is visible */
+* {
+    -webkit-text-fill-color: initial !important;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, a, div, li, section {
+    color: inherit !important;
+}
+
+.hero, .section, .footer {
+    color: #ffffff !important;
+}
+
+/* Disable gradient text on problematic browsers */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .hero h1,
+    .section-title,
+    .cta-title,
+    .stat-item h3 {
+        background: none !important;
+        -webkit-background-clip: border-box !important;
+        -webkit-text-fill-color: #ffffff !important;
+        color: #ffffff !important;
+    }
+}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body style="color: #ffffff !important;">
+<script>
+// Critical mobile text fix
+if (window.innerWidth <= 768) {
+    document.documentElement.style.webkitTextFillColor = 'initial';
+    document.body.style.webkitTextFillColor = 'initial';
+    document.body.style.color = '#ffffff';
+    
+    // Force override any gradient text
+    const style = document.createElement('style');
+    style.innerHTML = `
+        * {
+            -webkit-text-fill-color: initial !important;
+            color: inherit !important;
+        }
+        h1, h2, h3, h4, h5, h6, p, span, a, div {
+            color: #ffffff !important;
+            background: none !important;
+            -webkit-background-clip: border-box !important;
+        }
+    `;
+    document.head.appendChild(style);
+}
+</script>
 <!-- Ultra-Minimalist Header -->
 <header>
 <div class="container">
@@ -1548,17 +2044,17 @@ footer {
 </header>
 
 <!-- Revolutionary Hero Section -->
-<section id="home" class="hero">
+<section id="home" class="hero" style="color: #ffffff !important;">
 <div class="hero-bg"></div>
 <div class="hero-particles"></div>
-<div class="container">
-    <div class="hero-main">
-        <div class="hero-content">
+<div class="container" style="color: #ffffff !important;">
+    <div class="hero-main" style="color: #ffffff !important;">
+        <div class="hero-content" style="color: #ffffff !important;">
             <div class="hero-badge">
                 ✨ Where Excellence Meets Innovation
             </div>
-            <h1>Architectural Excellence in Digital Marketing</h1>
-            <p class="hero-subtitle">While others execute campaigns, I orchestrate symphonies of strategic brilliance. Experience marketing methodology that transcends conventional boundaries and establishes new paradigms of digital excellence.</p>
+            <h1 style="color: #ffffff !important;">Architectural Excellence in Digital Marketing</h1>
+            <p class="hero-subtitle" style="color: #ffffff !important;">While others execute campaigns, I orchestrate symphonies of strategic brilliance. Experience marketing methodology that transcends conventional boundaries and establishes new paradigms of digital excellence.</p>
             <div class="hero-actions">
                 <a href="#services" class="hero-primary-btn">Explore Our Mastery</a>
                 <a href="#portfolio" class="hero-secondary-btn">
@@ -1589,8 +2085,8 @@ footer {
 <section id="services" class="section services">
 <div class="container">
     <div class="section-header">
-        <h2 class="section-title">Sophisticated Marketing Architecture</h2>
-        <p class="section-description">We craft bespoke marketing ecosystems that transcend traditional methodologies, delivering transformative results through strategic innovation and meticulous execution.</p>
+        <h2 class="section-title" style="color: #ffffff !important;">Sophisticated Marketing Architecture</h2>
+        <p class="section-description" style="color: #ffffff !important;">We craft bespoke marketing ecosystems that transcend traditional methodologies, delivering transformative results through strategic innovation and meticulous execution.</p>
     </div>
     <div class="services-grid">
         <div class="service-card">
@@ -1599,8 +2095,8 @@ footer {
                 <div class="service-icon">
                     <i class="fas fa-chart-line"></i>
                 </div>
-                <h3 class="service-title">Strategic Consultancy & Planning</h3>
-                <p class="service-description">Comprehensive strategic frameworks designed through rigorous market analysis and competitive intelligence. We architect roadmaps that position your brand for sustained market leadership and exponential growth.</p>
+                <h3 class="service-title" style="color: #ffffff !important;">Strategic Consultancy & Planning</h3>
+                <p class="service-description" style="color: #ffffff !important;">Comprehensive strategic frameworks designed through rigorous market analysis and competitive intelligence. We architect roadmaps that position your brand for sustained market leadership and exponential growth.</p>
                 <a href="#" class="service-link">Discover Strategic Excellence <span>→</span></a>
             </div>
         </div>
@@ -1667,8 +2163,8 @@ footer {
 <section id="portfolio" class="section portfolio">
 <div class="container">
     <div class="section-header">
-        <h2 class="section-title">Distinguished Client Portfolio</h2>
-        <p class="section-description">Explore our curated collection of transformative partnerships, where strategic excellence meets measurable success across diverse industries and market segments.</p>
+        <h2 class="section-title" style="color: #ffffff !important;">Distinguished Client Portfolio</h2>
+        <p class="section-description" style="color: #ffffff !important;">Explore our curated collection of transformative partnerships, where strategic excellence meets measurable success across diverse industries and market segments.</p>
     </div>
     <div class="portfolio-filters">
         <button class="portfolio-filter-btn active" data-filter="all">All Projects</button>
@@ -1695,19 +2191,19 @@ footer {
                     </div>
                     <div class="portfolio-metrics">
                         <div class="metric-item">
-                            <div class="metric-value">240%</div>
-                            <div class="metric-label">Website Traffic</div>
+                            <div class="metric-value">25K+</div>
+                            <div class="metric-label">Monthly Views</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">180%</div>
-                            <div class="metric-label">Online Visibility</div>
+                            <div class="metric-value">£8K</div>
+                            <div class="metric-label">Revenue Growth</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">3.2x</div>
-                            <div class="metric-label">Lead Generation</div>
+                            <div class="metric-value">350+</div>
+                            <div class="metric-label">New Leads</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">Top 5</div>
+                            <div class="metric-value">Top 10</div>
                             <div class="metric-label">Google Rankings</div>
                         </div>
                     </div>
@@ -1743,20 +2239,20 @@ footer {
                     </div>
                     <div class="portfolio-metrics">
                         <div class="metric-item">
-                            <div class="metric-value">65%</div>
-                            <div class="metric-label">Page Speed Increase</div>
+                            <div class="metric-value">3.2s</div>
+                            <div class="metric-label">Page Load Time</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">2.8s</div>
-                            <div class="metric-label">Load Time</div>
+                            <div class="metric-value">85</div>
+                            <div class="metric-label">Speed Score</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">45%</div>
-                            <div class="metric-label">Bounce Rate Reduction</div>
+                            <div class="metric-value">£15K</div>
+                            <div class="metric-label">Monthly Sales</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">3.5x</div>
-                            <div class="metric-label">User Engagement</div>
+                            <div class="metric-value">1.8K</div>
+                            <div class="metric-label">Products Listed</div>
                         </div>
                     </div>
                     <p class="portfolio-description">Developed a high-performance e-commerce platform optimized for conversions. Improved site speed by 65% and reduced bounce rate by 45% through technical optimization and improved user experience design.</p>
@@ -1791,20 +2287,20 @@ footer {
                     </div>
                     <div class="portfolio-metrics">
                         <div class="metric-item">
-                            <div class="metric-value">320%</div>
-                            <div class="metric-label">Social Media Reach</div>
+                            <div class="metric-value">18K</div>
+                            <div class="metric-label">Instagram Followers</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">85%</div>
+                            <div class="metric-value">4.5%</div>
                             <div class="metric-label">Engagement Rate</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">2.5x</div>
-                            <div class="metric-label">Website Conversions</div>
+                            <div class="metric-value">£6K</div>
+                            <div class="metric-label">Monthly Revenue</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">Top 3</div>
-                            <div class="metric-label">Industry Rankings</div>
+                            <div class="metric-value">120+</div>
+                            <div class="metric-label">New Customers</div>
                         </div>
                     </div>
                     <p class="portfolio-description">Transformed this traditional jeweler's digital presence through strategic content marketing and social media campaigns. Increased social media reach by 320% and improved website conversion rates by 2.5x.</p>
@@ -1839,20 +2335,20 @@ footer {
                     </div>
                     <div class="portfolio-metrics">
                         <div class="metric-item">
-                            <div class="metric-value">98%</div>
-                            <div class="metric-label">Mobile Responsive</div>
+                            <div class="metric-value">100%</div>
+                            <div class="metric-label">Mobile Friendly</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">A+</div>
-                            <div class="metric-label">Security Rating</div>
+                            <div class="metric-value">SSL</div>
+                            <div class="metric-label">Secure Checkout</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">60%</div>
-                            <div class="metric-label">Session Duration</div>
+                            <div class="metric-value">2.5K</div>
+                            <div class="metric-label">Products</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">4.8/5</div>
-                            <div class="metric-label">User Experience</div>
+                            <div class="metric-value">4.7/5</div>
+                            <div class="metric-label">Customer Rating</div>
                         </div>
                     </div>
                     <p class="portfolio-description">Created a luxurious online shopping experience with advanced product visualization and secure payment processing. Increased average session duration by 60% and achieved a 4.8/5 user experience rating.</p>
@@ -1887,19 +2383,19 @@ footer {
                     </div>
                     <div class="portfolio-metrics">
                         <div class="metric-item">
-                            <div class="metric-value">150%</div>
-                            <div class="metric-label">Organic Traffic</div>
+                            <div class="metric-value">15K+</div>
+                            <div class="metric-label">Monthly Visitors</div>
                         </div>
                         <div class="metric-item">
                             <div class="metric-value">Page 1</div>
                             <div class="metric-label">Google Rankings</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">200%</div>
-                            <div class="metric-label">Lead Quality</div>
+                            <div class="metric-value">250+</div>
+                            <div class="metric-label">Quality Leads</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">75%</div>
+                            <div class="metric-value">£45</div>
                             <div class="metric-label">Cost Per Lead</div>
                         </div>
                     </div>
@@ -1935,20 +2431,20 @@ footer {
                     </div>
                     <div class="portfolio-metrics">
                         <div class="metric-item">
-                            <div class="metric-value">25K+</div>
-                            <div class="metric-label">Monthly Visitors</div>
+                            <div class="metric-value">28K</div>
+                            <div class="metric-label">Monthly Views</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">40%</div>
-                            <div class="metric-label">Repeat Users</div>
+                            <div class="metric-value">1.2K</div>
+                            <div class="metric-label">Active Users</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">4.5/5</div>
-                            <div class="metric-label">Platform Rating</div>
+                            <div class="metric-value">4.6/5</div>
+                            <div class="metric-label">User Rating</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">3x</div>
-                            <div class="metric-label">User Growth</div>
+                            <div class="metric-value">£9K</div>
+                            <div class="metric-label">Monthly Revenue</div>
                         </div>
                     </div>
                     <p class="portfolio-description">Built a comprehensive platform with integrated marketing automation. Achieved 25K+ monthly visitors and 3x user growth through targeted SEO and content marketing strategies.</p>
@@ -1974,20 +2470,20 @@ footer {
 <div class="container">
     <div class="stats-container">
         <div class="stat-item">
-            <h3><span class="counter" data-target="200">0</span>%</h3>
-            <p>Average Traffic Increase</p>
+            <h3 style="color: #ffffff !important;"><span class="counter" data-target="200" style="color: #ffffff !important;">0</span>%</h3>
+            <p style="color: #ffffff !important;">Average Traffic Increase</p>
         </div>
         <div class="stat-item">
-            <h3><span class="counter" data-target="150">0</span>%</h3>
-            <p>Lead Generation Growth</p>
+            <h3 style="color: #ffffff !important;"><span class="counter" data-target="150" style="color: #ffffff !important;">0</span>%</h3>
+            <p style="color: #ffffff !important;">Lead Generation Growth</p>
         </div>
         <div class="stat-item">
-            <h3><span class="counter" data-target="3">0</span>x</h3>
-            <p>Average ROI</p>
+            <h3 style="color: #ffffff !important;"><span class="counter" data-target="3" style="color: #ffffff !important;">0</span>x</h3>
+            <p style="color: #ffffff !important;">Average ROI</p>
         </div>
         <div class="stat-item">
-            <h3><span class="counter" data-target="50">0</span>+</h3>
-            <p>Successful Projects</p>
+            <h3 style="color: #ffffff !important;"><span class="counter" data-target="50" style="color: #ffffff !important;">0</span>+</h3>
+            <p style="color: #ffffff !important;">Successful Projects</p>
         </div>
     </div>
 </div>
@@ -1997,8 +2493,8 @@ footer {
 <section id="contact" class="section">
 <div class="container">
     <div class="section-header">
-        <h2 class="section-title">Initiate Strategic Partnership</h2>
-        <p class="section-description">Connect with our consultancy team to explore how sophisticated marketing architecture can transform your business objectives into measurable success.</p>
+        <h2 class="section-title" style="color: #ffffff !important;">Initiate Strategic Partnership</h2>
+        <p class="section-description" style="color: #ffffff !important;">Connect with our consultancy team to explore how sophisticated marketing architecture can transform your business objectives into measurable success.</p>
     </div>
     <div class="contact-grid">
         <div class="contact-info">
@@ -2068,7 +2564,7 @@ footer {
 <section class="section cta">
 <div class="container">
     <div class="cta-container">
-        <h2 class="cta-title">Ready to Transform Your Business?</h2>
+        <h2 class="cta-title" style="color: #ffffff !important;">Ready to Transform Your Business?</h2>
         <p class="cta-description">Join the elite circle of brands that have experienced unprecedented growth through our strategic marketing excellence.</p>
         <a href="#contact" class="cta-btn">Start Your Success Story</a>
     </div>
@@ -2318,6 +2814,30 @@ newsletterForms.forEach(form => {
 
 // Add animation classes
 document.addEventListener('DOMContentLoaded', function() {
+    // Critical mobile text fix
+    if (window.innerWidth <= 768) {
+        // Force all text to be visible
+        document.querySelectorAll('*').forEach(el => {
+            el.style.webkitTextFillColor = 'initial';
+            el.style.opacity = '1';
+        });
+        
+        // Specifically target problem elements
+        const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, div');
+        textElements.forEach(el => {
+            if (window.getComputedStyle(el).color === 'rgba(0, 0, 0, 0)') {
+                el.style.color = '#ffffff !important';
+            }
+        });
+        
+        // Remove animations
+        document.querySelectorAll('[class*="animation"], [class*="animate"]').forEach(el => {
+            el.style.animationDuration = '0.1s';
+            el.style.animationDelay = '0s';
+            el.style.opacity = '1';
+        });
+    }
+    
     // Add fade-in animation to elements
     const animatedElements = document.querySelectorAll('.service-card, .portfolio-item, .stat-item');
     
