@@ -1362,14 +1362,14 @@ header.scrolled {
     font-weight: 600;
 }
 
-/* Contact Section */
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
+/* Contact Section - Simplified */
+#contact {
+    text-align: center;
 }
 
-.contact-info {
+.contact-info-centered {
+    max-width: 600px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -1377,7 +1377,8 @@ header.scrolled {
 
 .contact-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     gap: 1rem;
 }
 
@@ -1423,78 +1424,6 @@ header.scrolled {
         font-size: 1.1rem;
         font-weight: 600;
     }
-}
-
-.contact-form {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2.5rem;
-    border-radius: 25px;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: var(--white);
-}
-
-.form-control {
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--white);
-}
-
-.form-control::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.form-control:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.2);
-}
-
-textarea.form-control {
-    min-height: 150px;
-    resize: vertical;
-    color: var(--white);
-}
-
-input.form-control,
-select.form-control {
-    color: var(--white) !important;
-}
-
-.form-btn {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: var(--white);
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 25px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-    font-family: 'Space Grotesk', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 1rem;
-}
-
-.form-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(106, 13, 173, 0.3);
 }
 
 /* CTA Section */
@@ -1565,42 +1494,43 @@ select.form-control {
     box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
 }
 
-/* Footer */
+/* Simple Footer */
 footer {
     background: linear-gradient(135deg, #0a0a0a, var(--black));
     color: var(--white);
-    padding: 5rem 0 0;
+    padding: 3rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    margin-bottom: 3rem;
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .footer-logo {
     font-size: 2rem;
     font-weight: 900;
     color: var(--white);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     display: inline-block;
     font-family: 'Space Grotesk', sans-serif;
     text-transform: uppercase;
     letter-spacing: -1px;
 }
 
-.footer-about {
-    line-height: 1.6;
-    opacity: 0.8;
-    margin-bottom: 1.5rem;
+.footer-tagline {
     color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
 }
 
 .footer-social {
     display: flex;
     gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
 }
 
 .footer-social-link {
@@ -1624,96 +1554,8 @@ footer {
     transform: translateY(-2px);
 }
 
-.footer-title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    position: relative;
-    padding-bottom: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.footer-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    border-radius: 2px;
-}
-
-.footer-links {
-    list-style: none;
-}
-
-.footer-links li {
-    margin-bottom: 1rem;
-}
-
-.footer-links a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-}
-
-.footer-links a:hover {
-    color: var(--primary-light);
-}
-
-.footer-links a i {
-    margin-right: 0.5rem;
-    font-size: 0.8rem;
-}
-
-.footer-newsletter-form {
-    display: flex;
-    margin-top: 1rem;
-}
-
-.footer-input {
-    flex: 1;
-    padding: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 25px 0 0 25px;
-    font-size: 0.9rem;
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--white);
-    backdrop-filter: blur(10px);
-}
-
-.footer-input:focus {
-    outline: none;
-    border-color: var(--primary);
-}
-
-.footer-input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.footer-submit {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: var(--white);
-    border: none;
-    padding: 0 1.5rem;
-    border-radius: 0 25px 25px 0;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.footer-submit:hover {
-    box-shadow: 0 5px 15px rgba(106, 13, 173, 0.3);
-}
-
 .copyright {
-    padding: 2rem 0;
-    text-align: center;
+    padding-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     opacity: 0.7;
     font-size: 0.9rem;
@@ -1920,7 +1762,7 @@ footer {
         margin-bottom: 2rem;
     }
     
-    .service-card, .contact-form {
+    .service-card {
         padding: 1.5rem;
     }
     
@@ -1934,15 +1776,6 @@ footer {
     
     .portfolio-category {
         font-size: 0.8rem;
-    }
-    
-    .form-control {
-        font-size: 16px; /* Prevents zoom on iOS */
-    }
-    
-    .footer-links a {
-        font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.85);
     }
     
     .copyright {
@@ -2498,72 +2331,40 @@ if (window.innerWidth <= 768) {
 </div>
 </section>
 
-<!-- Contact Section -->
+<!-- Contact Section - Simplified -->
 <section id="contact" class="section">
 <div class="container">
     <div class="section-header">
-        <h2 class="section-title" style="color: #ffffff !important;">Initiate Strategic Partnership</h2>
-        <p class="section-description" style="color: #ffffff !important;">Connect with our consultancy team to explore how sophisticated marketing architecture can transform your business objectives into measurable success.</p>
+        <h2 class="section-title" style="color: #ffffff !important;">Get In Touch</h2>
+        <p class="section-description" style="color: #ffffff !important;">Ready to transform your digital presence? Let's discuss how we can help your business reach new heights.</p>
     </div>
-    <div class="contact-grid">
-        <div class="contact-info">
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fas fa-phone-alt"></i>
-                </div>
-                <div class="contact-text">
-                    <h4>Direct Consultation</h4>
-                    <p><a href="tel:+447380139066">+44 7380 139066</a></p>
-                </div>
+    <div class="contact-info-centered">
+        <div class="contact-item">
+            <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
             </div>
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <div class="contact-text">
-                    <h4>Strategic Inquiries</h4>
-                    <p><a href="mailto:santokh@merlinsgroup.co.uk">santokh@merlinsgroup.co.uk</a></p>
-                </div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fab fa-linkedin"></i>
-                </div>
-                <div class="contact-text">
-                    <h4>Professional Network</h4>
-                    <p><a href="https://www.linkedin.com/in/santokh-saran-2806b379" target="_blank">Connect on LinkedIn</a></p>
-                </div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <div class="contact-text">
-                    <h4>Consultation Hours</h4>
-                    <p>Monday - Friday: 9:00 AM - 6:00 PM GMT</p>
-                </div>
+            <div class="contact-text">
+                <h4>Call Us</h4>
+                <p><a href="tel:+447380139066">+44 7380 139066</a></p>
             </div>
         </div>
-        <div class="contact-form">
-            <form id="contactForm">
-                <div class="form-group">
-                    <label for="name" class="form-label">Full Name</label>
-                    <input type="text" id="name" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="form-label">Professional Email</label>
-                    <input type="email" id="email" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="subject" class="form-label">Subject</label>
-                    <input type="text" id="subject" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="message" class="form-label">Your Message</label>
-                    <textarea id="message" class="form-control" required></textarea>
-                </div>
-                <button type="submit" class="form-btn">Send Message</button>
-            </form>
+        <div class="contact-item">
+            <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+                <h4>Email Us</h4>
+                <p><a href="mailto:santokh@merlinsgroup.co.uk">santokh@merlinsgroup.co.uk</a></p>
+            </div>
+        </div>
+        <div class="contact-item">
+            <div class="contact-icon">
+                <i class="fab fa-linkedin"></i>
+            </div>
+            <div class="contact-text">
+                <h4>Connect</h4>
+                <p><a href="https://www.linkedin.com/in/santokh-saran-2806b379" target="_blank">LinkedIn Profile</a></p>
+            </div>
         </div>
     </div>
 </div>
@@ -2580,49 +2381,19 @@ if (window.innerWidth <= 768) {
 </div>
 </section>
 
-<!-- Footer -->
+<!-- Simple Footer -->
 <footer>
 <div class="container">
-    <div class="footer-grid">
-        <div class="footer-column">
-            <h3 class="footer-logo">Santokh</h3>
-            <p class="footer-about">Elevating brands through sophisticated marketing strategies and cutting-edge digital solutions. Your success is our masterpiece.</p>
-            <div class="footer-social">
-                <a href="https://www.linkedin.com/in/santokh-saran-2806b379" target="_blank" class="footer-social-link"><i class="fab fa-linkedin-in"></i></a>
-                <a href="instagram/merlinthemarketer" class="footer-social-link"><i class="fab fa-instagram"></i></a>
-            </div>
+    <div class="footer-content">
+        <h3 class="footer-logo">Santokh</h3>
+        <p class="footer-tagline">Elevating brands through sophisticated marketing strategies and cutting-edge digital solutions.</p>
+        <div class="footer-social">
+            <a href="https://www.linkedin.com/in/santokh-saran-2806b379" target="_blank" class="footer-social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com/merlinthemarketer" target="_blank" class="footer-social-link"><i class="fab fa-instagram"></i></a>
         </div>
-        <div class="footer-column">
-            <h4 class="footer-title">Services</h4>
-            <ul class="footer-links">
-                <li><a href="#"><i class="fas fa-chevron-right"></i> Strategic Consultancy</a></li>
-                <li><a href="#"><i class="fas fa-chevron-right"></i> SEO & Digital Visibility</a></li>
-                <li><a href="#"><i class="fas fa-chevron-right"></i> Precision Advertising</a></li>
-                <li><a href="#"><i class="fas fa-chevron-right"></i> Social Media Excellence</a></li>
-                <li><a href="#"><i class="fas fa-chevron-right"></i> Content Strategy</a></li>
-            </ul>
+        <div class="copyright">
+            <p>&copy; 2024 Santokh.co.uk. All rights reserved. | Birmingham, UK</p>
         </div>
-        <div class="footer-column">
-            <h4 class="footer-title">Company</h4>
-            <ul class="footer-links">
-                <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                <li><a href="#portfolio"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
-                <li><a href="#"><i class="fas fa-chevron-right"></i> Case Studies</a></li>
-                <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                <li><a href="#"><i class="fas fa-chevron-right"></i> Careers</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4 class="footer-title">Newsletter</h4>
-            <p style="margin-bottom: 1rem; opacity: 0.8;">Subscribe to receive exclusive insights and industry updates.</p>
-            <form class="footer-newsletter-form">
-                <input type="email" class="footer-input" placeholder="Your email">
-                <button type="submit" class="footer-submit">Subscribe</button>
-            </form>
-        </div>
-    </div>
-    <div class="copyright">
-        <p>&copy; 2024 Santokh.co.uk. All rights reserved. | Crafted with excellence in Birmingham, UK</p>
     </div>
 </div>
 </footer>
@@ -2773,50 +2544,6 @@ const observer = new IntersectionObserver(function(entries) {
 // Observe elements
 document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
-});
-
-// Contact form handler with email functionality
-const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-    
-    // Construct mailto link
-    const mailtoLink = `mailto:santokh@merlinsgroup.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Show success message (optional)
-    alert('Opening your email client to send the message...');
-    
-    // Reset form
-    contactForm.reset();
-});
-
-// Newsletter form handler
-const newsletterForms = document.querySelectorAll('.footer-newsletter-form');
-newsletterForms.forEach(form => {
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = this.querySelector('input[type="email"]').value;
-        
-        // Construct mailto link for newsletter subscription
-        const mailtoLink = `mailto:santokh@merlinsgroup.co.uk?subject=Newsletter Subscription&body=Please subscribe this email to the newsletter: ${email}`;
-        
-        // Open email client
-        window.location.href = mailtoLink;
-        
-        // Show success message
-        alert('Thank you for subscribing! We will add you to our newsletter.');
-        
-        // Reset form
-        this.reset();
-    });
 });
 
 // Add animation classes
